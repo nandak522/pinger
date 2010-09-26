@@ -1,0 +1,14 @@
+Pinger is nothing but a simple service which pings the urls of the required
+websites on-demand and gives you the status of the Service.
+
+A service could be a url like Google.com
+
+The usage of Pinger will be like this:
+1)Any user can submit a site like xyz.com
+2)In the page containing the list of sites which are submitted, we have button
+called "Ping Now" for each webiste. And we have a global button called "Ping All" also, which
+ping all the sites at once.
+3)Upon receiving the response of any ping, it basically shows 3 types of Flags
+4)Red is for "Site is Down"
+5)Yellow is for "Slowness in the request/response scenario"
+6)Green is for "Site is Up and Running!"
