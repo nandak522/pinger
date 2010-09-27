@@ -1,12 +1,35 @@
-from django.conf import settings
-from django.http import HttpResponse, Http404
+from datetime import datetime
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from domains.models import Domain
-from utils import response, get_data, post_data
+from django.utils import simplejson as json
+from utils import response, post_data
+import urllib2
 
-def view_all_domains(request, all_domains_template):
-    return response(request, all_domains_template, {'domains':Domain.objects.all()})
+def view_homepage(request, homepage_template):
+    return response(request, homepage_template, {'domains':Domain.objects.all()})
 
-def view_domain_profile(request, domain_id, domain_profile_template):
+def _ping_domain(domain):
+    try:
+        response = urllib2.urlopen(domain.name)
+        response_code = response.code
+    except urllib2.URLError:
+        response_code = 600
+    domain.last_pinged = datetime.now()
+    domain.save()
+    return response_code
+
+def view_check_status(request):
+    domain_id = post_data(request).get('domain_id')
     domain = get_object_or_404(Domain, id=domain_id)
-    return response(request, domain_profile_template, {'domain':domain})
+    response_code = _ping_domain(domain)
+    return HttpResponse(str(response_code))
+
+def view_check_all(request):
+    domains = Domain.objects.all()
+    statuses = {}
+    for domain in domains:
+        response_code = _ping_domain(domain)
+        statuses[domain.id] = str(response_code)
+    return HttpResponse(json.dumps(statuses),
+                        mimetype='application/json')        

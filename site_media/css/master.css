@@ -1,2 +1,10 @@
 /*Global Styles*/
+body{margin-top:2em;background:#EEE;}
+#container{background:#FFF;}
 a{text-decoration:none;border-bottom:1px solid #105CB6;}
+#logo{text-align:center;font-size:4em;}
+#footer{font-size:1.4em;text-align:center;}
+th{background:url("/media/img/admin/nav-bg.gif") repeat-x scroll left top #E1E1E1;border:1px solid #DDDDDD}
+.check_now{background:#105CB6;padding:4px;color:#FFF;cursor:pointer;}
+.green{background:#71B300;padding:4px;cursor:pointer;}
+.red{background:#BE2805;padding:4px;cursor:pointer;}

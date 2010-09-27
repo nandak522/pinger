@@ -1,0 +1,26 @@
+{%extends 'singlepane_base.html'%}
+{%block title%}Home{%endblock%}
+{%block content%}
+<input id='ping_all' type='button' value="Ping All" onClick="javascript:check_all();"/>
+<br/>
+{%if domains%}
+<table>
+<tr>
+    <th>Domain</th>
+    <th>Last Pinged</th>
+    <th>Current Status</th>
+</tr>
+{%for domain in domains%}
+<tr>
+    <td>{{domain.name.lower}}</td><td>{{domain.last_pinged}}</td><td><span class="check_now" id="check_{{domain.id}}" onClick="javascript:check_status('{{domain.id}}');">Check Now</span></td>
+</tr>
+{%endfor%}
+</table>
+{%else%}
+No Domains to Ping
+{%endif%}
+{%endblock%}
+{%block extrajs%}
+<script type='text/javascript' src="/site_media/js/common.js"></script>
+<script type='text/javascript' src="/site_media/js/pinger.js"></script>
+{%endblock%}

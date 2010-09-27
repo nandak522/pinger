@@ -14,8 +14,8 @@ class DomainCreationTests(TestCase):
         self.assertEquals(domain.last_pinged.minute, datetime.now().minute)
 
     def test_duplicate_domain_creation(self):
-        domains = ['www.google.com', 
-                   'www.gmail.com', 
+        domains = ['http://www.google.com', 
+                   'http://www.teykee.com', 
 #                   'http://www.google.com', 
 #                   'https://google.com'
                    ]
