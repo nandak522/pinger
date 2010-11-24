@@ -75,3 +75,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'domains'
 )
+
+IS_PROXY_CONNECTION = True
+if IS_PROXY_CONNECTION:
+    PROXY_SETTINGS = {'username':'validusername',
+                      'password':'password',
+                      'host':'192.168.1.1',
+                      'port':'9999'}
+else:
+    PROXY_SETTINGS = {}
