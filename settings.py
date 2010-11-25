@@ -76,7 +76,7 @@ INSTALLED_APPS = (
     'domains'
 )
 
-IS_PROXY_CONNECTION = True
+IS_PROXY_CONNECTION = False
 if IS_PROXY_CONNECTION:
     PROXY_SETTINGS = {'username':'validusername',
                       'password':'password',
