@@ -12,3 +12,5 @@ ping all the sites at once.
 4)Red is for "Site is Down"
 5)Yellow is for "Slowness in the request/response scenario"
 6)Green is for "Site is Up and Running!"
+
+If you have a proxy connection, please enable 'IS_PROXY_CONNECTION' flag in settings.py to True
